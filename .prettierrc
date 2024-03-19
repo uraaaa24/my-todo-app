@@ -1,8 +1,10 @@
 {
-  "printWidth": 120,
-  "jsxBracketSameLine": false,
-  "tabWidth": 2,
-  "trailingComma": "none",
+  "printWidth": 128,
+  "singleQuote": true,
   "semi": false,
-  "singleQuote": true
+  "parser": "typescript",
+  "endOfLine": "lf",
+  "tabWidth": 2,
+  "useTabs": false,
+  "trailingComma": "none"
 }
