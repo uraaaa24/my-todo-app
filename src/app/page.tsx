@@ -1,5 +1,15 @@
-import styles from './page.module.css'
+async function getAllTodo() {
+  const responses = await fetch('http://localhost:3000/api/todo', {
+    cache: 'no-store'
+  })
 
-export default function Home() {
-  return <main className={styles.main}></main>
+  const allTodo = await responses.json()
+
+  return allTodo
+}
+
+export default async function Home() {
+  const allTodo = await getAllTodo()
+
+  return <div>hello</div>
 }
