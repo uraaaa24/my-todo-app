@@ -1,9 +1,11 @@
+import { Todo } from '@/types/model'
+
 async function getAllTodo() {
   const responses = await fetch('http://localhost:3000/api/todo', {
     cache: 'no-store'
   })
 
-  const allTodo = await responses.json()
+  const allTodo: Todo[] = await responses.json()
 
   return allTodo
 }
@@ -11,5 +13,5 @@ async function getAllTodo() {
 export default async function Home() {
   const allTodo = await getAllTodo()
 
-  return <div>hello</div>
+  return <div>{allTodo && allTodo.map((todo) => <div key={todo.id}>{todo.title}</div>)}</div>
 }

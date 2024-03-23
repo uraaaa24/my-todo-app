@@ -15,11 +15,13 @@ datasource db {
 
 // ユーザー情報を管理するためのモデル
 model User {
-  id        Int      @id @default(autoincrement())
-  username  String   @unique
-  email     String   @unique
-  password  String
-  todos     Todo[]  // ユーザーが持つToDoアイテムのリスト
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  email       String   @unique
+  password    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  todo        Todo[]  // ユーザーが持つToDoアイテムのリスト
 }
 
 // ToDoアイテムを管理するためのモデル
