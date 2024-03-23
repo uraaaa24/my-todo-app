@@ -17,6 +17,7 @@ export interface User {
 export interface Todo {
   id: number
   title: string
+  description: string
   completed: boolean
   dueDate: Date
   time: number

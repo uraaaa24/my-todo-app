@@ -1,5 +1,6 @@
 import { Todo } from '@/types/model'
-import { Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material'
+import { Paper, Table, TableContainer } from '@mui/material'
+import ToDoListTableBody from './body'
 import ToDoListTableHeader from './header'
 
 type TodoListTableProps = {
@@ -14,15 +15,7 @@ const ToDoListTable = (props: TodoListTableProps) => {
     <TableContainer component={Paper}>
       <Table>
         <ToDoListTableHeader />
-        <TableBody>
-          {props.todo.map((todo) => (
-            <TableRow key={todo.id}>
-              <TableCell>{todo.title}</TableCell>
-              <TableCell>{todo.dueDate.toString()}</TableCell>
-              <TableCell>{todo.completed ? '完了' : '未完了'}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
+        <ToDoListTableBody todo={props.todo} />
       </Table>
     </TableContainer>
   )

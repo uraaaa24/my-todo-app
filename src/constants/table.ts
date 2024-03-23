@@ -3,6 +3,8 @@ export const TODO_HEADER = {
   title: 'Title',
   description: 'Description',
   status: 'Status',
+  dueDate: 'Due Date',
+  time: 'Time',
   createdAt: 'Created At',
   updatedAt: 'Updated At'
 } as const
