@@ -8,7 +8,6 @@
     "start": "next start",
     "lint": "eslint --ext .ts,.js,.tsx . && prettier --check \"./**/*.{ts,js,tsx}\"",
     "lint:fix": "eslint --ext .ts,.js,.tsx . --fix && prettier --write \"./**/*.{ts,js,tsx,scss}\"",
-    "lint:style": "stylelint **/*.{css,scss}",
     "format": "prettier --write './**/*.{js,ts,tsx,scss}'",
     "prepare": "husky install"
   },
@@ -38,7 +37,6 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.{tsx,ts}": "npm run lint",
-    "*.{css,scss}": "npm run lint:style"
+    "*.{tsx,ts}": "npm run lint"
   }
 }
