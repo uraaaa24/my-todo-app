@@ -1,7 +1,8 @@
+import { API_ALL_TODO } from '@/constants/api'
 import { Todo } from '@/types/model'
 
 async function getAllTodo() {
-  const responses = await fetch('http://localhost:3000/api/todo', {
+  const responses = await fetch(API_ALL_TODO, {
     cache: 'no-store'
   })
 
