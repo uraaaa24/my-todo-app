@@ -1,4 +1,5 @@
 import { API_ALL_TODO } from '@/constants/api'
+import { ToDoListTableProvider } from '@/provider/todoListTableProvider'
 import { Todo } from '@/types/model'
 import ToDoListTable from './_components/todoListTable'
 
@@ -16,8 +17,8 @@ export default async function Home() {
   const allTodo = await getAllTodo()
 
   return (
-    <div>
+    <ToDoListTableProvider>
       <ToDoListTable todo={allTodo} />
-    </div>
+    </ToDoListTableProvider>
   )
 }
