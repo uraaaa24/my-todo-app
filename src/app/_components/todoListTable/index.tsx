@@ -17,13 +17,15 @@ type TodoListTableProps = {
 const ToDoListTable = (props: TodoListTableProps) => {
   return (
     <ToDoListTableProvider>
-      <TableContainer component={Paper}>
-        <Table>
-          <ToDoListTableHeader />
-          <ToDoListTableBody todo={props.todo} />
-          <ToDoListTableFooter totalCount={props.todo.length} />
-        </Table>
-      </TableContainer>
+      <Paper variant="outlined">
+        <TableContainer>
+          <Table>
+            <ToDoListTableHeader />
+            <ToDoListTableBody todo={props.todo} />
+            <ToDoListTableFooter totalCount={props.todo.length} />
+          </Table>
+        </TableContainer>
+      </Paper>
     </ToDoListTableProvider>
   )
 }
