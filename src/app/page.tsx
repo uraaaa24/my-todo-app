@@ -1,7 +1,10 @@
+import { API_ALL_TODO } from '@/constants/api'
+import { ToDoListTableProvider } from '@/provider/todoListTableProvider'
 import { Todo } from '@/types/model'
+import ToDoListTable from './_components/todoListTable'
 
 async function getAllTodo() {
-  const responses = await fetch('http://localhost:3000/api/todo', {
+  const responses = await fetch(API_ALL_TODO, {
     cache: 'no-store'
   })
 
@@ -10,8 +13,14 @@ async function getAllTodo() {
   return allTodo
 }
 
-export default async function Home() {
+const Home = async () => {
   const allTodo = await getAllTodo()
 
-  return <div>{allTodo && allTodo.map((todo) => <div key={todo.id}>{todo.title}</div>)}</div>
+  return (
+    <ToDoListTableProvider>
+      <ToDoListTable todo={allTodo} />
+    </ToDoListTableProvider>
+  )
 }
+
+export default Home

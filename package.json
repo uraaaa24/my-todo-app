@@ -8,7 +8,6 @@
     "start": "next start",
     "lint": "eslint --ext .ts,.js,.tsx . && prettier --check \"./**/*.{ts,js,tsx}\"",
     "lint:fix": "eslint --ext .ts,.js,.tsx . --fix && prettier --write \"./**/*.{ts,js,tsx,scss}\"",
-    "lint:style": "stylelint **/*.{css,scss}",
     "format": "prettier --write './**/*.{js,ts,tsx,scss}'",
     "prepare": "husky install"
   },
@@ -17,12 +16,15 @@
     "@commitlint/config-conventional": "^19.1.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
     "@prisma/client": "^5.11.0",
     "@supabase/supabase-js": "^2.39.8",
     "next": "14.1.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.51.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -38,7 +40,6 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.{tsx,ts}": "npm run lint",
-    "*.{css,scss}": "npm run lint:style"
+    "*.{tsx,ts}": "npm run lint"
   }
 }
