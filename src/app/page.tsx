@@ -13,7 +13,7 @@ async function getAllTodo() {
   return allTodo
 }
 
-export default async function Home() {
+const Home = async () => {
   const allTodo = await getAllTodo()
 
   return (
@@ -22,3 +22,5 @@ export default async function Home() {
     </ToDoListTableProvider>
   )
 }
+
+export default Home
