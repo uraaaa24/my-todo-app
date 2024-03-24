@@ -5,9 +5,9 @@ import { TableBody, TableCell, TableRow } from '@mui/material'
 type TodoTableRow = {
   id: number
   title: string
-  description: string
+  description?: string
   status: string
-  dueDate: string
+  dueDate?: string
   time: number
   createdAt: string
   updatedAt: string

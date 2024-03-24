@@ -37,7 +37,7 @@ const ToDoListTable = (props: TodoListTableProps) => {
       title: todo.title,
       description: todo.description,
       status: todo.completed ? '完了' : '未完了',
-      dueDate: todo.dueDate.toLocaleString(),
+      dueDate: todo.dueDate?.toLocaleString(),
       time: todo.time,
       createdAt: todo.createdAt.toLocaleString(),
       updatedAt: todo.updatedAt.toLocaleString()
