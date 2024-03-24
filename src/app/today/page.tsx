@@ -1,5 +1,12 @@
+import ToDoForm from './_components/todoForm'
+
 const Today = async () => {
-  return <div>今日の予定</div>
+  return (
+    <>
+      <h1>Today</h1>
+      <ToDoForm />
+    </>
+  )
 }
 
 export default Today
