@@ -16,7 +16,7 @@ const ToDoListTableBody = (props: ToDoListTableBodyProps) => {
   return (
     <TableBody>
       {props.todo.map((todo) => (
-        <TableRow key={todo.id}>
+        <TableRow key={todo.id} hover>
           {isShowColumns[TODO_HEADER.id] && <TableCell>{todo.id}</TableCell>}
           {isShowColumns[TODO_HEADER.title] && <TableCell>{todo.title}</TableCell>}
           {isShowColumns[TODO_HEADER.description] && <TableCell>{todo.description}</TableCell>}
