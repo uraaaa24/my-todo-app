@@ -1,5 +1,5 @@
 import { currentDate } from '@/utils'
-import { Box, Typography } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 import ToDoForm from './_components/todoForm'
 
 const Today = async () => {
@@ -8,9 +8,9 @@ const Today = async () => {
   return (
     <>
       <Typography variant="h4">{today}</Typography>
-      <Box sx={{ mt: 2 }}>
+      <Container maxWidth="sm" sx={{ mt: 2 }}>
         <ToDoForm />
-      </Box>
+      </Container>
     </>
   )
 }
