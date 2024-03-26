@@ -1,10 +1,10 @@
-import { API_ALL_TODO } from '@/constants/api'
+import { API_TODO } from '@/constants/api'
 import { ToDoListTableProvider } from '@/provider/todoListTableProvider'
 import { Todo } from '@/types/model'
 import ToDoListTable from './_components/todoListTable'
 
 async function getAllTodo() {
-  const responses = await fetch(API_ALL_TODO, {
+  const responses = await fetch(API_TODO, {
     cache: 'no-store'
   })
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { API_ALL_TODO } from '@/constants/api'
+import { API_TODO } from '@/constants/api'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Box, Button } from '@mui/material'
 import { useRouter } from 'next/navigation'
@@ -27,7 +27,7 @@ const ToDoForm = () => {
     const { title } = value
 
     try {
-      await fetch(API_ALL_TODO, {
+      await fetch(API_TODO, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
