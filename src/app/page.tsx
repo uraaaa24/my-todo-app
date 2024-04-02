@@ -13,6 +13,9 @@ async function getAllTodo() {
   return allTodo
 }
 
+/**
+ * ホームページ
+ */
 const Home = async () => {
   const allTodo = await getAllTodo()
 

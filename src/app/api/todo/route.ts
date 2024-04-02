@@ -1,36 +1,17 @@
 import prisma from '@/lib/prisma/client'
-import { parseISO } from 'date-fns'
-import { NextApiRequest } from 'next'
 import { NextResponse } from 'next/server'
 
-async function getAllTodo() {
-  return await prisma.todo.findMany()
+/**
+ * ToDoリストを全て取得する
+ */
+export async function GET() {
+  const allTodos = await prisma.todo.findMany()
+  return NextResponse.json(allTodos)
 }
 
-async function getTodoByDate(date: string) {
-  const parsedDate = parseISO(date)
-
-  return await prisma.todo.findMany({
-    where: {
-      createdAt: parsedDate
-    }
-  })
-}
-
-export async function GET(req: NextApiRequest, { params }) {
-  const date = params?.date
-
-  let result = []
-
-  if (date) {
-    result = await getTodoByDate(date.toString())
-  } else {
-    result = await getAllTodo()
-  }
-
-  return NextResponse.json(result)
-}
-
+/**
+ * ToDoを追加する
+ */
 export async function POST(req: Request) {
   const { title, userId } = await req.json()
 
