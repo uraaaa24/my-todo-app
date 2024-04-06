@@ -1,16 +1,13 @@
 'use client'
 
 import { API_TODO } from '@/constants/api'
+import { TodoFormNames } from '@/schemas/todoTitleInput'
+import { TodoFormSchemaInferType, TodoFormValidationSchema } from '@/schemas/todoTitleInput/validation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Box, Button } from '@mui/material'
 import { useRouter } from 'next/navigation'
 import { FormProvider, useForm } from 'react-hook-form'
-import { z } from 'zod'
 import TitleInput from './titleInput'
-
-const formSchema = z.object({
-  title: z.string().max(50, { message: '50文字以内で入力してください' })
-})
 
 /**
  * ToDoのフォームコンポーネント
@@ -19,11 +16,11 @@ const ToDoForm = () => {
   const router = useRouter()
 
   const methods = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: { title: '' }
+    resolver: zodResolver(TodoFormValidationSchema),
+    defaultValues: { [TodoFormNames.title]: '' }
   })
 
-  const onSubmit = async (value: z.infer<typeof formSchema>) => {
+  const onSubmit = async (value: TodoFormSchemaInferType) => {
     const { title } = value
 
     try {
@@ -32,9 +29,11 @@ const ToDoForm = () => {
         headers: {
           'Content-Type': 'application/json'
         },
+        // TODO: ユーザーIDを固定値で送信しているため、ログイン機能を実装した際に修正する
         body: JSON.stringify({ title, userId: 2 })
       })
-      router.push('/')
+      methods.reset()
+      router.refresh()
     } catch (error) {
       console.error(error)
     }
