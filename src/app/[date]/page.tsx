@@ -1,6 +1,5 @@
 import { generateCurrentDateToDoEndpoint } from '@/constants/api'
 import { Todo } from '@/types/model'
-import { currentDate } from '@/utils'
 import { Container, Typography } from '@mui/material'
 import ToDoForm from './_components/todoForm'
 import TodoFormControlLabel from './_components/todoFormControlLabel'
@@ -23,14 +22,13 @@ async function getTodoByDate(date: string) {
 /**
  * 当日のToDoページ
  */
-const Today = async () => {
-  const currentDate2 = new Date().toISOString().split('T')[0]
-  const today = currentDate().replace(/\//g, '-')
-  const todoByDate = await getTodoByDate(currentDate2)
+const Today = async ({ params }: { params: { date: string } }) => {
+  const currentDate = params.date
+  const todoByDate = await getTodoByDate(currentDate)
 
   return (
     <>
-      <Typography variant="h4">{today}</Typography>
+      <Typography variant="h4">{currentDate}</Typography>
       <Container maxWidth="sm" sx={{ mt: 2 }}>
         <ToDoForm />
         {todoByDate &&
