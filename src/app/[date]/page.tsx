@@ -10,7 +10,6 @@ async function getTodoByDate(date: string) {
   })
 
   if (!response.ok) {
-    // エラー処理
     const errorData = await response.json()
     throw new Error(`Error ${response.status}: ${errorData.message}`)
   }
@@ -20,9 +19,9 @@ async function getTodoByDate(date: string) {
 }
 
 /**
- * 当日のToDoページ
+ * 指定された日付のToDoを表示するページ
  */
-const Today = async ({ params }: { params: { date: string } }) => {
+const DesignatedDate = async ({ params }: { params: { date: string } }) => {
   const currentDate = params.date
   const todoByDate = await getTodoByDate(currentDate)
 
@@ -40,4 +39,4 @@ const Today = async ({ params }: { params: { date: string } }) => {
   )
 }
 
-export default Today
+export default DesignatedDate
