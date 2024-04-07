@@ -1,18 +1,7 @@
 import { TODO_HEADER } from '@/constants/table'
 import { useToDoListTableContext } from '@/context/todoListTableContext'
+import { TodoTableRow } from '@/types/table'
 import { TableBody, TableCell, TableRow } from '@mui/material'
-
-type TodoTableRow = {
-  id: number
-  index: number
-  title: string
-  description?: string
-  completed: string
-  dueDate?: string
-  time: number
-  createdAt: string
-  updatedAt: string
-}
 
 type ToDoListTableBodyProps = {
   todo: TodoTableRow[]
@@ -31,7 +20,7 @@ const ToDoListTableBody = (props: ToDoListTableBodyProps) => {
           {isShowColumns[TODO_HEADER.index] && <TableCell>{todo.index}</TableCell>}
           {isShowColumns[TODO_HEADER.title] && <TableCell>{todo.title}</TableCell>}
           {isShowColumns[TODO_HEADER.description] && <TableCell>{todo.description}</TableCell>}
-          {isShowColumns[TODO_HEADER.completed] && <TableCell>{todo.completed}</TableCell>}
+          {isShowColumns[TODO_HEADER.completed] && <TableCell>{todo.completed ? '完了' : '未完了'}</TableCell>}
           {isShowColumns[TODO_HEADER.dueDate] && <TableCell>{todo.dueDate}</TableCell>}
           {isShowColumns[TODO_HEADER.time] && <TableCell>{todo.time}</TableCell>}
           {isShowColumns[TODO_HEADER.createdAt] && <TableCell>{todo.createdAt}</TableCell>}

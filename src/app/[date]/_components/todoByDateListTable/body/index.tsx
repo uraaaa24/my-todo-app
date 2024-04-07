@@ -1,19 +1,8 @@
 import { TODO_HEADER } from '@/constants/table'
 import { useToDoListTableContext } from '@/context/todoListTableContext'
+import { TodoTableRow } from '@/types/table'
 import { Checkbox, TableBody, TableCell, TableRow } from '@mui/material'
 import { Controller, useForm } from 'react-hook-form'
-
-type TodoTableRow = {
-  id: number
-  completed: boolean
-  index: number
-  title: string
-  description?: string
-  dueDate?: string
-  time: number
-  createdAt: string
-  updatedAt: string
-}
 
 type TodoByDateListTableBodyProps = {
   todo: TodoTableRow[]

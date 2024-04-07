@@ -38,7 +38,7 @@ const ToDoListTable = (props: TodoListTableProps) => {
       index: index,
       title: todo.title,
       description: todo.description,
-      completed: todo.completed ? '完了' : '未完了',
+      completed: todo.completed,
       dueDate: todo.dueDate ? formatDateTime(new Date(todo.dueDate)) : '',
       time: todo.time,
       createdAt: formatDateTime(new Date(todo.createdAt)),
