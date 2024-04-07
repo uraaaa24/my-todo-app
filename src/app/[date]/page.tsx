@@ -1,8 +1,7 @@
 import { generateCurrentDateToDoEndpoint } from '@/constants/api'
-import { Todo } from '@/types/model'
-import { Container, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
+import TodoByDateListTable from './_components/todoByDateListTable'
 import ToDoForm from './_components/todoForm'
-import TodoFormControlLabel from './_components/todoFormControlLabel'
 
 async function getTodoByDate(date: string) {
   const response = await fetch(generateCurrentDateToDoEndpoint(date), {
@@ -28,13 +27,10 @@ const DesignatedDate = async ({ params }: { params: { date: string } }) => {
   return (
     <>
       <Typography variant="h4">{currentDate}</Typography>
-      <Container maxWidth="sm" sx={{ mt: 2 }}>
+      <Box sx={{ mt: 2 }}>
         <ToDoForm />
-        {todoByDate &&
-          todoByDate.map((todo: Todo) => {
-            return <TodoFormControlLabel key={todo.id} todo={todo} />
-          })}
-      </Container>
+        <TodoByDateListTable todo={todoByDate} />
+      </Box>
     </>
   )
 }

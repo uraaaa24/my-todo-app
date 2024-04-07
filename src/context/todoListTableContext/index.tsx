@@ -5,7 +5,7 @@ export const defaultToDoListTableIsShowColumns: { [key in ToDoHeader]: boolean }
   [TODO_HEADER.id]: true,
   [TODO_HEADER.title]: true,
   [TODO_HEADER.description]: false,
-  [TODO_HEADER.status]: true,
+  [TODO_HEADER.completed]: true,
   [TODO_HEADER.dueDate]: true,
   [TODO_HEADER.time]: true,
   [TODO_HEADER.createdAt]: true,

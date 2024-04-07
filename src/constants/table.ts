@@ -2,7 +2,7 @@ export const TODO_HEADER = {
   id: 'No.',
   title: 'Title',
   description: 'Description',
-  status: 'Status',
+  completed: 'Completed',
   dueDate: 'Due Date',
   time: 'Time',
   createdAt: 'Created At',

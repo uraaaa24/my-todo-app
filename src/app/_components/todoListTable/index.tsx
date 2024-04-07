@@ -3,6 +3,7 @@
 import { ToDoHeader } from '@/constants/table'
 import { useToDoListTableContext } from '@/context/todoListTableContext'
 import { Todo } from '@/types/model'
+import { formatDateTime } from '@/utils'
 import { Box, Paper, Table, TableContainer } from '@mui/material'
 import { useCallback } from 'react'
 import SearchForm from '../searchForm'
@@ -36,11 +37,11 @@ const ToDoListTable = (props: TodoListTableProps) => {
       id: index,
       title: todo.title,
       description: todo.description,
-      status: todo.completed ? '完了' : '未完了',
-      dueDate: todo.dueDate?.toLocaleString(),
+      completed: todo.completed ? '完了' : '未完了',
+      dueDate: todo.dueDate ? formatDateTime(new Date(todo.dueDate)) : '',
       time: todo.time,
-      createdAt: todo.createdAt.toLocaleString(),
-      updatedAt: todo.updatedAt.toLocaleString()
+      createdAt: formatDateTime(new Date(todo.createdAt)),
+      updatedAt: formatDateTime(new Date(todo.updatedAt))
     }
   }, [])
 
