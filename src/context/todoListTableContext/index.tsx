@@ -2,7 +2,7 @@ import { TODO_HEADER, ToDoHeader } from '@/constants/table'
 import { createContext, useContext } from 'react'
 
 export const defaultToDoListTableIsShowColumns: { [key in ToDoHeader]: boolean } = {
-  [TODO_HEADER.id]: true,
+  [TODO_HEADER.index]: true,
   [TODO_HEADER.title]: true,
   [TODO_HEADER.description]: false,
   [TODO_HEADER.completed]: true,
