@@ -1,5 +1,5 @@
 export const TODO_HEADER = {
-  id: 'No.',
+  index: 'No.',
   title: 'Title',
   description: 'Description',
   completed: 'Completed',

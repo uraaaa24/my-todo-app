@@ -4,6 +4,7 @@ import { TableBody, TableCell, TableRow } from '@mui/material'
 
 type TodoTableRow = {
   id: number
+  index: number
   title: string
   description?: string
   completed: string
@@ -27,7 +28,7 @@ const ToDoListTableBody = (props: ToDoListTableBodyProps) => {
     <TableBody>
       {props.todo.map((todo) => (
         <TableRow key={todo.id} hover>
-          {isShowColumns[TODO_HEADER.id] && <TableCell>{todo.id}</TableCell>}
+          {isShowColumns[TODO_HEADER.index] && <TableCell>{todo.index}</TableCell>}
           {isShowColumns[TODO_HEADER.title] && <TableCell>{todo.title}</TableCell>}
           {isShowColumns[TODO_HEADER.description] && <TableCell>{todo.description}</TableCell>}
           {isShowColumns[TODO_HEADER.completed] && <TableCell>{todo.completed}</TableCell>}

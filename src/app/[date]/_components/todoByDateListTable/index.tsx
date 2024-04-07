@@ -20,7 +20,8 @@ const TodoByDateListTable = (props: TodoByDateListTableProps) => {
   const generateTableRows = useCallback((todo: Todo, i: number) => {
     const index = i + 1
     return {
-      id: index,
+      id: todo.id,
+      index: index,
       completed: todo.completed,
       title: todo.title,
       description: todo.description,

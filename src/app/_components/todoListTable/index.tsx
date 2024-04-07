@@ -34,7 +34,8 @@ const ToDoListTable = (props: TodoListTableProps) => {
   const generateTableRows = useCallback((todo: Todo, i: number) => {
     const index = i + 1 + currentPage * rowsPerPage
     return {
-      id: index,
+      id: todo.id,
+      index: index,
       title: todo.title,
       description: todo.description,
       completed: todo.completed ? '完了' : '未完了',
