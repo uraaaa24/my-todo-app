@@ -58,7 +58,7 @@ const TodoByDateListTableBody = (props: TodoByDateListTableBodyProps) => {
               />
             </TableCell>
           )}
-          {isShowColumns[TODO_HEADER.index] && <TableCell>{todo.id}</TableCell>}
+          {isShowColumns[TODO_HEADER.index] && <TableCell>{todo.index}</TableCell>}
           {isShowColumns[TODO_HEADER.title] && <TableCell>{todo.title}</TableCell>}
           {isShowColumns[TODO_HEADER.description] && <TableCell>{todo.description}</TableCell>}
           {isShowColumns[TODO_HEADER.dueDate] && <TableCell>{todo.dueDate}</TableCell>}

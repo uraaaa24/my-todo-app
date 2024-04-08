@@ -1,8 +1,8 @@
 export const TODO_HEADER = {
+  completed: 'Completed',
   index: 'No.',
   title: 'Title',
   description: 'Description',
-  completed: 'Completed',
   dueDate: 'Due Date',
   time: 'Time',
   createdAt: 'Created At',

@@ -4,8 +4,10 @@ import { API_TODO } from '@/constants/api'
 import { TodoFormNames } from '@/schemas/todoTitleInput'
 import { TodoFormSchemaInferType, TodoFormValidationSchema } from '@/schemas/todoTitleInput/validation'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Box, Button } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add'
+import { Box, Button, Dialog, DialogTitle } from '@mui/material'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import TitleInput from './titleInput'
 
@@ -14,6 +16,8 @@ import TitleInput from './titleInput'
  */
 const ToDoForm = () => {
   const router = useRouter()
+
+  const [open, setOpen] = useState(false)
 
   const methods = useForm({
     resolver: zodResolver(TodoFormValidationSchema),
@@ -36,17 +40,36 @@ const ToDoForm = () => {
       router.refresh()
     } catch (error) {
       console.error(error)
+    } finally {
+      handleClose()
     }
+  }
+
+  const handleOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
   }
 
   return (
     <FormProvider {...methods}>
-      <Box component="form" onSubmit={methods.handleSubmit(onSubmit)} sx={{ display: 'flex', gap: 2, mb: 2 }}>
-        <TitleInput />
-        <Button type="submit" variant="contained">
+      <Box sx={{ display: 'flex', width: '100%', justifyContent: 'right', mb: 1.5 }}>
+        <Button variant="contained" startIcon={<AddIcon />} onClick={handleOpen}>
           Add
         </Button>
       </Box>
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>ToDoを追加</DialogTitle>
+        <Box component="form" onSubmit={methods.handleSubmit(onSubmit)} display="flex" flexDirection="column" gap={2} p={2}>
+          <TitleInput />
+          <Button type="submit" variant="contained">
+            保存
+          </Button>
+        </Box>
+      </Dialog>
     </FormProvider>
   )
 }
