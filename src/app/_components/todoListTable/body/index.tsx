@@ -17,10 +17,11 @@ const ToDoListTableBody = (props: ToDoListTableBodyProps) => {
     <TableBody>
       {props.todo.map((todo) => (
         <TableRow key={todo.id} hover>
+          {/* TODO: 暫定的に先頭に completed を配置。本来はindexを先頭に配置する */}
+          {isShowColumns[TODO_HEADER.completed] && <TableCell>{todo.completed ? '完了' : '未完了'}</TableCell>}
           {isShowColumns[TODO_HEADER.index] && <TableCell>{todo.index}</TableCell>}
           {isShowColumns[TODO_HEADER.title] && <TableCell>{todo.title}</TableCell>}
           {isShowColumns[TODO_HEADER.description] && <TableCell>{todo.description}</TableCell>}
-          {isShowColumns[TODO_HEADER.completed] && <TableCell>{todo.completed ? '完了' : '未完了'}</TableCell>}
           {isShowColumns[TODO_HEADER.dueDate] && <TableCell>{todo.dueDate}</TableCell>}
           {isShowColumns[TODO_HEADER.time] && <TableCell>{todo.time}</TableCell>}
           {isShowColumns[TODO_HEADER.createdAt] && <TableCell>{todo.createdAt}</TableCell>}

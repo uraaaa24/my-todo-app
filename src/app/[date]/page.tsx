@@ -29,7 +29,7 @@ const DesignatedDate = async ({ params }: { params: { date: string } }) => {
       <Typography variant="h4">{currentDate}</Typography>
       <Box sx={{ mt: 2 }}>
         <ToDoForm />
-        <TodoByDateListTable todo={todoByDate} />
+        <TodoByDateListTable todo={todoByDate} currentDate={currentDate} />
       </Box>
     </>
   )
