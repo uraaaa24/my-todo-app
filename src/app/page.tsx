@@ -1,17 +1,6 @@
-import { API_TODO } from '@/constants/api'
 import { ToDoListTableProvider } from '@/provider/todoListTableProvider'
-import { Todo } from '@/types/model'
+import { getAllTodo } from '@/utils/requester/get/todo'
 import ToDoListTable from './_components/todoListTable'
-
-async function getAllTodo() {
-  const responses = await fetch(API_TODO, {
-    cache: 'no-store'
-  })
-
-  const allTodo: Todo[] = await responses.json()
-
-  return allTodo
-}
 
 /**
  * ホームページ

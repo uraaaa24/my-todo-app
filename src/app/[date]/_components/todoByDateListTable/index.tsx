@@ -1,6 +1,5 @@
 'use client'
 
-import { useGetTodoByDate } from '@/hooks/api/useGetTodoByDate'
 import { Todo } from '@/types/model'
 import { formatDateTime } from '@/utils'
 import { Paper, Table, TableContainer } from '@mui/material'
@@ -18,9 +17,6 @@ type TodoByDateListTableProps = {
  * ToDoリストを表示するテーブルコンポーネント
  */
 const TodoByDateListTable = (props: TodoByDateListTableProps) => {
-  const { data, error, isLoading, isValidating, refetchKey } = useGetTodoByDate(props.currentDate)
-  console.log(data)
-
   /** テーブルの行を生成する関数 */
   const generateTableRows = useCallback((todo: Todo, i: number) => {
     const index = i + 1
@@ -38,7 +34,7 @@ const TodoByDateListTable = (props: TodoByDateListTableProps) => {
   }, [])
 
   const totalToDoCount = props.todo.length
-  const todoTableRows = props.todo.map(generateTableRows)
+  const todoTableRows = props.todo.sort((a, b) => a.id - b.id).map(generateTableRows)
 
   return (
     <Paper variant="outlined">

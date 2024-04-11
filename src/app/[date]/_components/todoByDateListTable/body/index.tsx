@@ -1,8 +1,7 @@
-import { generateToDoByIdEndpoint } from '@/constants/api'
 import { TODO_HEADER } from '@/constants/table'
 import { useToDoListTableContext } from '@/context/todoListTableContext'
 import { TodoTableRow } from '@/types/table'
-import { currentDateString } from '@/utils'
+import { insertTodo as _insertTodo } from '@/utils/requester/put/todo/date'
 import { Checkbox, TableBody, TableCell, TableRow } from '@mui/material'
 import { Controller, useForm } from 'react-hook-form'
 
@@ -10,15 +9,14 @@ type TodoByDateListTableBodyProps = {
   todo: TodoTableRow[]
 }
 
-const updateTodo = async (date: string, id: number, completed: boolean) => {
+const insertTodo = async (date: string, id: number, completed: boolean) => {
   try {
-    const res = await fetch(generateToDoByIdEndpoint(currentDateString(), id.toString()), {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ completed })
-    })
+    const response = await _insertTodo(id, completed)
+
+    const jsonData = await response.json()
+    const result = jsonData.result
+
+    return result
   } catch (error) {
     console.error('Error updating todo:', error)
     return { error: 'Error updating todo' }
@@ -33,7 +31,9 @@ const TodoByDateListTableBody = (props: TodoByDateListTableBodyProps) => {
   const { isShowColumns } = useToDoListTableContext()
 
   const handleCheckboxChange = async (date: string, id: number, checked: boolean) => {
-    await updateTodo(date, id, checked)
+    const result = await insertTodo(date, id, checked)
+    console.log('result', result)
+
     setValue(`completed.${id}`, checked)
   }
 
